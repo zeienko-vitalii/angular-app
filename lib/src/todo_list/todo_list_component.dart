@@ -40,7 +40,7 @@ class TodoListComponent implements OnInit {
     newTodo = '';
   }
 
-  void omgRandom() {
+  void chooseWinner() {
     if (items != null && items.isNotEmpty) {
       int winnerPos = Random().nextInt(items.length);
       winner = items[winnerPos];
