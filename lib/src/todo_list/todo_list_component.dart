@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:angular/angular.dart';
 import 'package:angular_components/angular_components.dart';
@@ -13,6 +14,7 @@ import 'todo_list_service.dart';
     MaterialCheckboxComponent,
     MaterialFabComponent,
     MaterialIconComponent,
+    MaterialButtonComponent,
     materialInputDirectives,
     NgFor,
     NgIf,
@@ -23,6 +25,7 @@ class TodoListComponent implements OnInit {
   final TodoListService todoListService;
 
   List<String> items = [];
+  String winner;
   String newTodo = '';
 
   TodoListComponent(this.todoListService);
@@ -35,6 +38,13 @@ class TodoListComponent implements OnInit {
   void add() {
     items.add(newTodo);
     newTodo = '';
+  }
+
+  void omgRandom() {
+    if (items != null && items.isNotEmpty) {
+      int winnerPos = Random().nextInt(items.length);
+      winner = items[winnerPos];
+    }
   }
 
   String remove(int index) => items.removeAt(index);
